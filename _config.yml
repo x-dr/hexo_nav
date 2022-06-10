@@ -103,5 +103,5 @@ theme: webstack
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: git
-  repo: git@github.com:x-dr/x-dr.github.io.git
+  repo: git@github.com:x-dr/nav.git
   branch: main

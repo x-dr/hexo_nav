@@ -30,7 +30,7 @@ jobs:
       run: |
         npm install hexo-cli -g
         npm install
-        wget -O source/gallery/bing.md https://raw.githubusercontent.com/x-dr/bing/main/wallpaper.md
+ #       wget -O source/gallery/bing.md https://raw.githubusercontent.com/x-dr/bing/main/wallpaper.md
     
     - name: Setup Deploy Private Key
       env:
