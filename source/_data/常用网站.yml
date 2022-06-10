@@ -19,7 +19,7 @@
   img: https://www.ping.cn/favicon.ico
   description: 免费提供网站速度测试
 - name: Cloudflare
-  url: https://dash.cloudflare.com/f2f657ef88142b794b30a3e5754d73e3
+  url: https://dash.cloudflare.com/login
   img: https://dash.cloudflare.com/favicon.ico
   description: 帮助站点抵御大多数网络攻击，确保长期在线，提升性能、访问速度
 - name: V2EX
