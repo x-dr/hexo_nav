@@ -1,0 +1,53 @@
+# workflow name
+name: Hexo Blog CI
+
+# master branch on push, auto run
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+  schedule:
+   - cron: '20 14 * * *'
+      
+jobs:
+  build: 
+    runs-on: ubuntu-latest 
+        
+    steps:
+    # check it to your workflow can access it
+    # from: https://github.com/actions/checkout
+    - name: Checkout Repository main branch
+      uses: actions/checkout@master 
+      
+    # from: https://github.com/actions/setup-node  
+    - name: Setup Node.js 12 
+      uses: actions/setup-node@master
+      with:
+        node-version: 12
+    
+    - name: Setup Hexo Dependencies
+      run: |
+        npm install hexo-cli -g
+        npm install
+        wget -O source/gallery/bing.md https://raw.githubusercontent.com/x-dr/bing/main/wallpaper.md
+    
+    - name: Setup Deploy Private Key
+      env:
+        HEXO_DEPLOY_PRIVATE_KEY: ${{ secrets.HEXO_DEPLOY_PRIVATE_KEY }}
+      run: |
+        mkdir -p ~/.ssh/
+        echo "$HEXO_DEPLOY_PRIVATE_KEY" > ~/.ssh/id_rsa 
+        chmod 600 ~/.ssh/id_rsa
+        ssh-keyscan github.com >> ~/.ssh/known_hosts
+        
+        
+    - name: Setup Git Infomation
+      run: | 
+          git config --global user.email "action@github.com"
+          git config --global user.name "GitHub Action"
+    - name: Deploy Hexo 
+      run: |
+        hexo clean
+        hexo generate 
+        hexo deploy

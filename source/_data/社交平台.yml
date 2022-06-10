@@ -1,0 +1,13 @@
+- name: Bilibili
+  url: https://space.bilibili.com
+  img: https://www.bilibili.com/favicon.ico
+  description: Bilibili
+- name: 知乎
+  url: https://www.zhihu.com/
+  img: /img/zhihu.png
+  description: 中文互联网高质量的问答社区和创作者聚集的原创内容平台
+- name: YouTube
+  url: https://www.youtube.com/
+  img: /img/youtube.png
+  description: YouTube
+
